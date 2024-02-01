@@ -1,0 +1,48 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: board
+
+  # H2 Setting Info (H2 Console에 접속하기 위한 설정정보 입력)
+  h2:
+    console:
+      enabled: true  # H2 Console을 사용할지 여부 (H2 Console은 H2 Database를 UI로 제공해주는 기능)
+      path: /h2-console  # H2 Console의 Path
+  # Database Setting Info (Database를 H2로 사용하기 위해 H2연결 정보 입력)
+  datasource:
+    driver-class-name: org.h2.Driver  # Database를 H2로 사용하겠다.
+    url: jdbc:h2:E:/workspace/intellij/board/testdb  # H2 접속 정보
+    username: sa  # H2 접속 시 입력할 username 정보 (원하는 것으로 입력)
+    password:  # H2 접속 시 입력할 password 정보 (원하는 것으로 입력)
+
+  thymeleaf:
+    prefix: classpath:/templates/   # Optional
+    suffix: .html                   # Optional
+    cache: false                    # Optional (default: true)
+
+  config:
+    import: optional:configserver:http://admin:admin@localhost:9000 # http://아이디:비밀번호@아이피:포트
+  cloud:
+    config:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: true 	#유레카 서버에 등록할지 여부
+    fetch-registry: true    #유레카 서버의 정보를 가져올지 여부
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka    #유레카 서버 주소 http://아이디:비밀번호@아이피:8761/eureka
+
+management:                 # Spring Actuator
+  endpoint:
+    gateway:
+      enabled: true         # default: true
+    env:
+      show-values: ALWAYS   # /actuator/env에서 value를 보여줄지 여부 (ALWAYS/NEVER/WHEN_AUTHORIZED)
+  endpoints:
+    web:
+      exposure:
+        include: env    # 엔드포인트가 어떤 항목들을 사용할 것인지 지정 (여기서는 gateway)

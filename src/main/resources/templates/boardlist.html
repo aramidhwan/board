@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 리스트</title>
+</head>
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+</style>
+<body>
+    <div class="layout">
+        <h3><a href="/board">첫 페이지</a> <a href="/board/write">새글 등록</a></h3>
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board : ${list}">
+                    <td><a th:text="${board.id}" th:href="@{/board/view(id=${board.id})}">기본ID</a></td>
+                    <td><a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">기본제목</a></td>
+                    <td><a th:href="@{/board/delete(id=${board.id})}">글삭제</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

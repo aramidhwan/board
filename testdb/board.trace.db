@@ -1,0 +1,9 @@
+2024-01-11 16:35:28.564364+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOARD" not found (this database is empty); SQL statement:
+insert into board (content,title,id) values (?,?,default) [42104-224]
+2024-01-11 16:39:52.225943+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOARD" not found (this database is empty); SQL statement:
+insert into board (content,title,id) values (?,?,default) [42104-224]
+2024-01-11 16:40:31.523211+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOARD" not found (this database is empty); SQL statement:
+insert into board (content,title,id) values (?,?,default) [42104-224]
