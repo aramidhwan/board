@@ -1,0 +1,24 @@
+pipeline {
+
+	agent any
+
+	stages {
+		stage('Git Clone') {
+			steps {
+			  git branch: 'main',
+			      credentialsId: 'forGitHub',
+			      url: 'https://github.com/aramidhwan/board.git'
+			}
+		}
+		stage('Gradle Build') {
+			steps {
+			  dir("./") {
+		      sh '''
+		         echo 'BBBBBBBBBBBBBBBBBBBB'
+		      '''
+			  }
+			}
+		}
+
+	}
+}
